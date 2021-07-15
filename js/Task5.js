@@ -15,26 +15,18 @@
 // }
 
 function hasAccess (person) {
-    // if(person.age <= 18 && person.age >= 35) {
-    //     console.log("You have no access");
-    //     return;
-    // } else if(+person.paid === 0){ //(person.paid === false)
-    //     console.log("You have no access. Pay, please");
-    //     return;
-    // } else if(+person.blocked === 1) {
-    //     console.log("You have no access. You are blocked");
-    //     return;
-    // } else if(+person.badUsername === 1) {
-    //     console.log("You have no access. You have bad userName");
-    //     return;
-    // } else if (+person.isAdmin === 0 || person.isAdmin === 1 && (person.age <= 18 && person.age >= 35)) {
-    //     console.log("You have no access. You are not an admin");
-    //     return;
-    // } else {
-    //     console.log("You have an access");
-    //     return;
-    // }
 
+    // person.isAdmin ? (
+    //     (person.age < 18 || person.age > 35) ? (
+    //         console.log("You have no access. You are too young")
+    //     ) : (
+    //         console.log("You have an access")
+    //     )
+    //     ) : (
+    //     //else
+    //     ((person.age < 18 || person.age > 35) || (+person.paid === 0) || (+person.blocked === 1) || (+person.badUsername === 1)) ?  console.log("You don`t have an access") : console.log("You have an access")
+    // );
+    
     if(person.isAdmin) {
         if(person.age < 18 || person.age > 35) {
             console.log("You have no access. You are too young");
