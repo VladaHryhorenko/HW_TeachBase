@@ -16,6 +16,9 @@
 
 function hasAccess (person) {
 
+    
+    //Реализация через тернарный оператор
+    
     // person.isAdmin ? (
     //     (person.age < 18 || person.age > 35) ? (
     //         console.log("You have no access. You are too young")
