@@ -8,7 +8,6 @@ function sortDesc(arr) {
                 arr[j] = arr[j+1];
                 arr[j+1] = term;
             }
-            else 
         }
         console.log(arr);
     }
