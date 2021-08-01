@@ -1,27 +1,27 @@
 let human = {
     setName: function() {
-        human.fullName = prompt("What is your full name?", "John Smith");
-        human.firstName = human.fullName.split(" ")[0];
-        human.lastName = human.fullName.split(" ")[1];
-        delete human.fullName;
+        this.fullName = prompt("What is your full name?", "John Smith");
+        this.firstName = this.fullName.split(" ")[0];
+        this.lastName = this.fullName.split(" ")[1];
+        delete this.fullName;
     },
     getName: function() {
-        human.fullName = human.firstName + ' ' + human.lastName; 
-        return human.fullName;
+        this.fullName = this.firstName + ' ' + this.lastName; 
+        return this.fullName;
     },
     setDateOfBirth: function() {
-        human.dateOfBirth = prompt("When is your birthday? (format dd.mm.yyyy)", "06.04.2001");
+        this.dateOfBirth = prompt("When is your birthday? (format dd.mm.yyyy)", "06.04.2001");
         let birthday = {};
-        birthday.day = +(human.dateOfBirth.slice(0, 2)); // 6
-        birthday.mounth = +(human.dateOfBirth.slice(3, 5)); // 4
-        birthday.year = +(human.dateOfBirth.slice(6, 10)); // 2001
-        human.age = Math.floor((new Date() - new Date(birthday.year, birthday.mounth, birthday.day)) / (1000 * 60 * 60 * 24 * 30 * 12));
+        birthday.day = +(this.dateOfBirth.slice(0, 2)); // 6
+        birthday.mounth = +(this.dateOfBirth.slice(3, 5)); // 4
+        birthday.year = +(this.dateOfBirth.slice(6, 10)); // 2001
+        this.age = Math.floor((new Date() - new Date(birthday.year, birthday.mounth, birthday.day)) / (1000 * 60 * 60 * 24 * 30 * 12));
     },
     getDateOfBirth: function() {
-        return human.dateOfBirth;
+        return this.dateOfBirth;
     },
     getAge: function() {
-        return human.age;
+        return this.age;
     }
 };
 

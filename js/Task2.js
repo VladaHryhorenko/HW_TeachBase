@@ -9,7 +9,7 @@ function compareArr(arr1, arr2) {
                 console.log('kl;')
                 if(arr1[i] !== arr2[i]) {
                     return console.log("Arrays aren`t eaquel");
-                } else continue;
+                }
             }
             return console.log("Arrays are eaquel");
         } else {

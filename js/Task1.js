@@ -5,15 +5,19 @@ function func1(str) {
     } else {
         let worldList = str.split(' ');
         let resList = worldList.map((item) => {
-            return {
-                word: item,
-                length: 1, 
-                isCapitalized: false
+            let obj = {};
+            obj.word =  item;
+            obj.length = item.length; 
+            if (item[0] !== item[0].toUpperCase()) {
+                obj.isCapitalized = false;
+            } else {
+                obj.isCapitalized = true;
             }
+            return obj;
         })
         return resList;
     }
 }
 
-let str = 'Lorem ipsum dolor sit amet consectetur adipisicing elit';
+let str = 'Lorem ipsum dolor Sit amet consectetur adipisicing Elit';
 console.log(func1(str));
