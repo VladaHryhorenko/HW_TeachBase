@@ -69,7 +69,7 @@ const Employee = function(position = "Middle FE Developer", startDate = "12.12.2
         return console.log(this.department);
     }
     this.getFullInfo = function() {
-        Object.getPrototypeOf(this).getFullInfo();
+        Object.getPrototypeOf(this).getFullInfo.bind(this)();
         console.log("Department: " + this.department);
         console.log("Date of start: " + this.startDate);
         console.log("Position: " + this.position);
@@ -102,7 +102,7 @@ const CurrentEmployee = function(baseSalary = "2000", salaryCurrancy = "$") {
         return console.log(this.baseSalary);
     }
     this.getFullInfo = function() {
-        Object.getPrototypeOf(this).getFullInfo();
+        Object.getPrototypeOf(this).getFullInfo.bind(this)();
         console.log("Base salary: " + this.baseSalary);
         console.log("Salary currancy: " + this.salaryCurrancy);
     }
@@ -117,6 +117,10 @@ const FormerEmployee = function (endDate = "20.09.2020") {
     this.getEndDate = function() {
         return console.log(this.endDate);
     }
+    this.getFullInfo = function() {
+        Object.getPrototypeOf(this).getFullInfo.bind(this)();
+        console.log("End date: " + this.endDate);
+    }
 }
 
 
@@ -124,16 +128,14 @@ Employee.prototype = new Person();
 CurrentEmployee.prototype = new Employee();
 FormerEmployee.prototype = new Employee();
 let john = new CurrentEmployee();
-console.log(john);
 //john.getFullInfo();
 
+let kate = new FormerEmployee();
+kate.getFullInfo();
+
 let alex = new Employee();
-//alex.getFullInfo();
 alex.setName('Alex');
 alex.setLastName('Dou');
 alex.setPosition('Senior FE Dev');
 alex.setStartDate('30.04.2019');
-
-alex.getName();
-alex.getFullInfo();
-console.log(alex);
+//alex.getFullInfo();
