@@ -1,22 +1,53 @@
-const el = document.getElementById('item1');
-const obj =  {
-    title: 'Hello world',
-    description: 'The first program',
+
+const KEY = 'AaW92RjZq0nZMALH8E22d78F4HKJkino'
+
+const input = document.getElementById('input');
+const list = document.createElement("ul");
+document.body.appendChild(list);
+
+let cache = {}
+function getGif(event) {
+   console.log('4')
+   let flag = true;
+   if (flag) {
+      list.innerHTML = '';
+      if (event.target.value in cache) {
+         console.log('from cache')
+         console.log(cache)
+         cache[`${event.target.value}`].forEach(element => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.setAttribute('href', element.url);
+            a.innerHTML = element.url;
+            li.appendChild(a);
+            list.appendChild(li);
+         });
+      }
+      else {
+         fetch(`https://api.giphy.com/v1/gifs/search?api_key=${KEY}&q=${event.target.value}&limit=10`)
+            .then(response => response.json())
+            .then(data => {
+               data.data.forEach(element => {
+                  const li = document.createElement('li');
+                  const a = document.createElement('a');
+                  a.setAttribute('href', element.url);
+                  a.innerHTML = element.url;
+                  li.appendChild(a);
+                  list.appendChild(li);
+               });
+               return cache = {
+                  ...cache,
+                  [event.target.value]: data.data
+               }
+            })
+            .catch((e) => console.log(`Error: ${e}`))
+      }
+   } 
+   setInterval(()=> {
+      flag = false;
+      console.log('5')
+   }, 500)
+
 }
 
-function parseTemplate(el, obj){
-    console.log(el.children);
-    for(let i = 0; i < el.children.length; i++) {
-        if(el.children[i].hasAttribute('data-field')){
-            //console.log(el.children[i].getAttribute('data-field'));
-            if(obj.hasOwnProperty(el.children[i].getAttribute('data-field'))) {
-                el.children[i].innerHTML = obj[ el.children[i].getAttribute('data-field') ];
-            } else {
-                throw new Error("Error! No such property in the object!");
-            }
-        }
-    }
-};
-
-console.log(el);
-parseTemplate(el, obj);
+input.addEventListener("input", getGif);
